@@ -18,6 +18,8 @@
 
 This repo contains all the material I used while attending [Weights & Biases' MLOPs course](https://www.wandb.courses/courses/effective-mlops-model-development).
 
+The dataset used for this course is the BDD simple 1k, which is a small subset of the original [BDD 100k dataset](https://www.bdd100k.com/)
+
 
 ## Dashboard
 Checkout the project on [Weights & Biases](https://wandb.ai/aliberts/mlops-course-001).
@@ -43,6 +45,14 @@ conda create --yes --name wandb python=3.10
 conda activate wandb
 poetry install
 ```
+
+#### Step 4
+Download the `bdd1k` dataset:
+```bash
+make dataset
+```
+This will download and extract the archive into `dataset/` and then delete the original `.zip` archive.
+You can also download it manually [here](https://storage.googleapis.com/wandb_course/bdd_simple_1k.zip). If you do, you'll need to update the `dataset.dir` option in [src/config.py](src/config.py)
 
 #### Optional
 Make your commands shorter with this `alias`:
