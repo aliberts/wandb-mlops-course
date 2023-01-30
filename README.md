@@ -39,8 +39,8 @@ make setup-poetry
 #### Step 3
 Setup the environment:
 ```bash
-conda create --yes --name gzoo python=3.10
-conda activate gzoo
+conda create --yes --name wandb python=3.10
+conda activate wandb
 poetry install
 ```
 
