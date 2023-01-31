@@ -15,7 +15,7 @@ def main(cfg: MainConfig) -> None:
     if cfg.wandb.connect:
         run = wandb.init(project=cfg.wandb.project, entity=cfg.wandb.entity, job_type="upload")
 
-    raw_data_at = wandb.Artifact(cfg.wandb.raw_data_at, type="raw_data")
+    raw_data_at = wandb.Artifact(cfg.dataset.raw_data_at, type="raw_data")
     raw_data_at.add_file(cfg.dataset.license, name=cfg.dataset.license_file.name)
     raw_data_at.add_dir(cfg.dataset.images, name=cfg.dataset.images_dir.name)
     raw_data_at.add_dir(cfg.dataset.labels, name=cfg.dataset.labels_dir.name)

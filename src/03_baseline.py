@@ -41,7 +41,7 @@ def main(cfg: MainConfig) -> None:
         config=asdict(cfg.train),
     )
 
-    processed_dataset_dir = download_data(cfg.wandb.processed_data_at)
+    processed_dataset_dir = download_data(cfg.dataset.processed_data_at)
 
     df = get_df(processed_dataset_dir, cfg.dataset.data_split_file, is_test=False)
 

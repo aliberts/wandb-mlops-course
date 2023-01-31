@@ -12,7 +12,7 @@ from src.config import MainConfig
 def main(cfg: MainConfig) -> None:
 
     run = wandb.init(project=cfg.wandb.project, entity=cfg.wandb.entity, job_type="data_split")
-    raw_data_at = run.use_artifact(f"{cfg.wandb.raw_data_at}:latest")
+    raw_data_at = run.use_artifact(f"{cfg.dataset.raw_data_at}:latest")
     path = Path(raw_data_at.download())
 
     orig_eda_table = raw_data_at.get(cfg.wandb.eda_table)
@@ -26,7 +26,7 @@ def main(cfg: MainConfig) -> None:
     print(df.Stage.value_counts())
     df.to_csv(cfg.dataset.data_split, index=False)
 
-    processed_data_at = wandb.Artifact(cfg.wandb.processed_data_at, type="split_data")
+    processed_data_at = wandb.Artifact(cfg.dataset.processed_data_at, type="split_data")
     processed_data_at.add_file(cfg.dataset.data_split)
     processed_data_at.add_dir(path)
     data_split_table = wandb.Table(dataframe=df[["File_Name", "Stage"]])
