@@ -6,6 +6,7 @@ from tqdm import tqdm
 
 import wandb
 from src.config import MainConfig
+from src.utils import label_func
 
 
 @pyrallis.wrap()
@@ -59,10 +60,6 @@ def create_table(image_files, class_labels):
         )
 
     return table
-
-
-def label_func(fname):
-    return (fname.parent.parent / "labels") / f"{fname.stem}_mask.png"
 
 
 def get_classes_per_image(mask_data, class_labels):

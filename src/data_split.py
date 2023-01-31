@@ -24,10 +24,10 @@ def main(cfg: MainConfig) -> None:
 
     print("data split:")
     print(df.Stage.value_counts())
-    df.to_csv("data_split.csv", index=False)
+    df.to_csv(cfg.dataset.data_split, index=False)
 
     processed_data_at = wandb.Artifact(cfg.wandb.processed_data_at, type="split_data")
-    processed_data_at.add_file("data_split.csv")
+    processed_data_at.add_file(cfg.dataset.data_split)
     processed_data_at.add_dir(path)
     data_split_table = wandb.Table(dataframe=df[["File_Name", "Stage"]])
     join_table = wandb.JoinedTable(orig_eda_table, data_split_table, "File_Name")
