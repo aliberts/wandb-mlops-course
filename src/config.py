@@ -19,7 +19,7 @@ class WandBConfig:
 @dataclass
 class DatasetConfig:
     name: str = "bdd1k"
-    dir: Path = field(default=Path("dataset/BDD_SIMPLE_1k"))
+    dir: Path = field(default=Path("artifacts/bdd_simple_1k:v0"))
     classes: dict = field(
         default_factory=lambda: {
             i: c
@@ -39,6 +39,7 @@ class DatasetConfig:
     images_dir: Path = field(default=Path("images"))
     labels_dir: Path = field(default=Path("labels"))
     license_file: Path = field(default=Path("LICENSE.txt"))
+    data_split_file: Path = field(default=Path("data_split.csv"))
 
     @property
     def images(self) -> Path:
@@ -51,6 +52,10 @@ class DatasetConfig:
     @property
     def license(self) -> Path:
         return self.dir / self.license_file
+
+    @property
+    def data_split(self) -> Path:
+        return self.dir / self.data_split_file
 
 
 @dataclass
