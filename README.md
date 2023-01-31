@@ -43,6 +43,8 @@ Setup the environment:
 ```bash
 conda create --yes --name wandb python=3.10
 conda activate wandb
+git clone git@github.com:aliberts/wandb-mlops-course.git
+cd wandb-mlops-course
 poetry install
 ```
 
@@ -51,7 +53,7 @@ Download the `bdd1k` dataset:
 ```bash
 make dataset
 ```
-This will download and extract the archive into `dataset/` and then delete the original `.zip` archive.
+This will download and extract the archive into `artifacts/` and then delete the original `.zip` archive.
 You can also download it manually [here](https://storage.googleapis.com/wandb_course/bdd_simple_1k.zip). If you do, you'll need to update the `dataset.dir` option in [src/config.py](src/config.py)
 
 #### Optional
