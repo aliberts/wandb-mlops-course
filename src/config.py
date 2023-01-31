@@ -59,7 +59,22 @@ class DatasetConfig:
 
 
 @dataclass
+class TrainConfig:
+    framework: str = "fastai"
+    img_size: tuple[int] = (180, 320)
+    batch_size: int = 8
+    augment: bool = True  # use data augmentation
+    epochs: int = 10
+    lr: float = 2e-3
+    arch: str = "resnet18"
+    pretrained: bool = True  # whether to use pretrained encoder
+    seed: int = 42
+    log_preds: bool = True
+
+
+@dataclass
 class MainConfig:
     wandb: WandBConfig = field(default_factory=WandBConfig)
     dataset: DatasetConfig = field(default_factory=DatasetConfig)
+    train: TrainConfig = field(default_factory=TrainConfig)
     debug: bool = False

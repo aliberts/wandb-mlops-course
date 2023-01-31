@@ -7,6 +7,9 @@ dataset/
 artifacts/
 *.csv
 
+# Models
+models/
+
 # Logs
 logs/*
 !logs/.gitkeep
