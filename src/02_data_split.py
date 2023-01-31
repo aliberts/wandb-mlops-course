@@ -33,8 +33,7 @@ def main(cfg: MainConfig) -> None:
     join_table = wandb.JoinedTable(orig_eda_table, data_split_table, "File_Name")
     processed_data_at.add(join_table, "eda_table_data_split")
 
-    if cfg.wandb.connect:
-        run.log_artifact(processed_data_at)
+    run.log_artifact(processed_data_at)
 
     run.finish()
 

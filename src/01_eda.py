@@ -12,8 +12,7 @@ from src.utils import label_func
 @pyrallis.wrap()
 def main(cfg: MainConfig) -> None:
 
-    if cfg.wandb.connect:
-        run = wandb.init(project=cfg.wandb.project, entity=cfg.wandb.entity, job_type="upload")
+    run = wandb.init(project=cfg.wandb.project, entity=cfg.wandb.entity, job_type="upload")
 
     raw_data_at = wandb.Artifact(cfg.dataset.raw_data_at, type="raw_data")
     raw_data_at.add_file(cfg.dataset.license, name=cfg.dataset.license_file.name)
@@ -28,9 +27,8 @@ def main(cfg: MainConfig) -> None:
     table = create_table(image_files, cfg.dataset.classes)
     raw_data_at.add(table, cfg.wandb.eda_table)
 
-    if cfg.wandb.connect:
-        run.log_artifact(raw_data_at)
-        run.finish()
+    run.log_artifact(raw_data_at)
+    run.finish()
 
 
 def create_table(image_files, class_labels):

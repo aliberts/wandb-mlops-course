@@ -5,7 +5,6 @@ from typing import Optional
 
 @dataclass
 class WandBConfig:
-    connect: bool = False
     entity: str = "aliberts"
     project: str = "mlops-course-001"
     run_name: Optional[str] = None
