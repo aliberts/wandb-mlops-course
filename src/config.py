@@ -11,8 +11,9 @@ class WandBConfig:
     run_name: Optional[str] = None
     tags: Optional[list] = None
     note: Optional[str] = None
-    raw_data_at = "bdd_simple_1k"
-    processed_data_at = "bdd_simple_1k_split"
+    raw_data_at: str = "bdd_simple_1k"
+    processed_data_at: str = "bdd_simple_1k_split"
+    eda_table: str = "eda_table"
 
 
 @dataclass

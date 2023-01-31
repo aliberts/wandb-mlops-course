@@ -25,7 +25,7 @@ def main(cfg: MainConfig) -> None:
         image_files = image_files[:10]  # Sample a subset if debug
 
     table = create_table(image_files, cfg.dataset.classes)
-    raw_data_at.add(table, "eda_table")
+    raw_data_at.add(table, cfg.wandb.eda_table)
 
     if cfg.wandb.connect:
         run.log_artifact(raw_data_at)
